@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Enter Withdrawal Amount</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: linear-gradient(to right, #2c3e50, #8e44ad);
+      color: white;
+      text-align: center;
+      padding-top: 80px;
+    }
+
+    .form-container {
+      background-color: rgba(255, 255, 255, 0.1);
+      padding: 30px;
+      border-radius: 15px;
+      display: inline-block;
+      box-shadow: 0 0 15px rgba(0,0,0,0.2);
+    }
+
+    input[type="number"] {
+      width: 250px;
+      padding: 12px;
+      margin: 10px 0;
+      border: none;
+      border-radius: 8px;
+    }
+
+    input[type="submit"],
+    .home-button {
+      padding: 12px 25px;
+      margin-top: 10px;
+      background-color: #9b59b6;
+      border: none;
+      border-radius: 8px;
+      color: white;
+      font-size: 16px;
+      cursor: pointer;
+      text-decoration: none;
+      display: inline-block;
+    }
+
+    input[type="submit"]:hover,
+    .home-button:hover {
+      background-color: #16a085;
+    }
+
+    h3 {
+      margin-bottom: 30px;
+    }
+  </style>
+</head>
+<body>
+  <script>
+    var data = "{{msg}}";
+    if (data == "nobalance"){
+      alert("Insufficient funds !");
+    }
+    else if(data == "balance"){
+      alert("Transaction Sucessfull !");
+    }
+    
+  </script>
+  <div class="form-container">
+    <h2>Withdraw</h2>
+    <h3>Welcome, {{user_name}} !</h3>
+    <form action="/withdraw3" method="POST">
+      <input type="hidden" value = "{{accno}}" name="accno">
+      <input type="number" name="amount" placeholder="Enter Amount to Withdraw" required><br>
+      <input type="submit" value="Withdraw">
+      <a href="/home" class="home-button">Home</a>
+    </form>
+  </div>
+</body>
+</html>

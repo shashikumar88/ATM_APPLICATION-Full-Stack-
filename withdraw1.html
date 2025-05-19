@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Withdraw</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: linear-gradient(to right, #34495e, #2ecc71);
+      color: white;
+      text-align: center;
+      padding-top: 80px;
+    }
+
+    h2 {
+      font-size: 28px;
+      margin-bottom: 30px;
+    }
+
+    .form-container {
+      display: inline-block;
+      background-color: rgba(255, 255, 255, 0.1);
+      padding: 30px;
+      border-radius: 15px;
+      box-shadow: 0 0 15px rgba(0,0,0,0.2);
+    }
+
+    input[type="text"],
+    input[type="password"] {
+      width: 250px;
+      padding: 12px;
+      margin: 10px 0;
+      border: none;
+      border-radius: 8px;
+    }
+
+    input[type="submit"],
+    .home-button {
+      padding: 12px 25px;
+      margin-top: 10px;
+      background-color: #27ae60;
+      border: none;
+      border-radius: 8px;
+      color: white;
+      font-size: 16px;
+      cursor: pointer;
+      display: inline-block;
+      text-decoration: none;
+    }
+
+    input[type="submit"]:hover,
+    .home-button:hover {
+      background-color: #1abc9c;
+    }
+
+    .button-group {
+      margin-top: 15px;
+    }
+  </style>
+</head>
+<body>
+  <script>
+    var data = "{{ msg }}";
+    if (data == "noaccount"){
+      alert("Account Does not Exist");
+    }
+    else if (data == "wrongpin"){
+      alert("Invalid Pin !");
+    }
+    else if (data == "nopin"){
+      alert("Pin Not yet Generated !");
+    }
+
+  </script>
+  <h2>Withdraw Money</h2>
+  <div class="form-container">
+    <form action="/withdraw2" method="POST">
+      <input type="text" name="account_number" placeholder="Enter Account Number" required><br>
+      <input type="password" name="pin" placeholder="Enter PIN" required><br>
+      <div class="button-group">
+        <input type="submit" value="Proceed">
+        <a href="/home" class="home-button">Home</a>
+      </div>
+    </form>
+  </div>
+</body>
+</html>
